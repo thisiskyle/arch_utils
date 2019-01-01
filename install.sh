@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp ./.Xresources $HOME/.Xresources
+cp ./.Xdefaults $HOME/.Xdefaults
 cp ./.bashrc $HOME/.bashrc
 cp ./.fehbg $HOME/.fehbg
 cp ./.xinitrc $HOME/.xinitrc
-cp -r ./.config $HOME/.config
-cp -r ./wallpaper $HOME/wallpaper
+cp -R ./.config $HOME/.config/
+cp -R ./wallpaper $HOME/wallpaper/
 

@@ -1,6 +1,5 @@
 URxvt.scrollBar: false
-URxvt.boldFont:
-URxvt.font: xft:Courier Prime Code:size=10
+URxvt.boldFont: false
 
 ! hard contrast: *background: #1d2021
 !*background: #282828

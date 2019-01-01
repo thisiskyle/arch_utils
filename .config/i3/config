@@ -196,7 +196,7 @@ bar {
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
 exec --no-startup-id ~/.fehbg
-exec --no-startup-id compton &
+#exec --no-startup-id compton &
 
 
 for_window [class="^.*"] border pixel 2 
