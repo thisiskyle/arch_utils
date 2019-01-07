@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp $HOME/.Xdefaults ./.Xdefaults 
-cp $HOME/.bashrc ./.bashrc
-cp $HOME/.fehbg ./.fehbg
-cp $HOME/.xinitrc ./.xinitrc
-cp -r $HOME/.config ./.config/
-cp -r $HOME/wallpaper ./wallpaper/
+cp $HOME/.Xdefaults $HOME/.dotfiles/.Xdefaults 
+cp $HOME/.bashrc $HOME/.dotfiles/.bashrc
+cp $HOME/.fehbg $HOME/.dotfiles/.fehbg
+cp $HOME/.xinitrc $HOME/.dotfiles/.xinitrc
+cp -R $HOME/.config/* $HOME/.dotfiles/.config/
+cp -R $HOME/wallpaper $HOME/.dotfiles/wallpaper/
 
