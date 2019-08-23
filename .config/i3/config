@@ -171,29 +171,19 @@ bindsym $mod+r mode "resize"
 bar {
 	position top
         status_command i3status
-	font pango:Courier Prime Code 12
         colors {
-              #background #ebdbb2 
-              #statusline #32302f
-              #separator #32302f
               background #32302f
               statusline #ebdbb2
-              separator #ebdbb2 
-
-
-	      #inactive_workspace #ebdbb2 #ebdbb2 #32302f
-	      #focused_workspace #32302f #32302f #ebdbb2
+              separator #ebdbb2
 	      inactive_workspace #32302f #32302f #ebdbb2
 	      focused_workspace #ebdbb2 #32302f #ebdbb2
-
-  }
+        }
 }
 
 # my stuff
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
 exec --no-startup-id ~/.fehbg
-#exec --no-startup-id compton &
 
 
 for_window [class="^.*"] border pixel 2 
