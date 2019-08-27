@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -43,10 +43,10 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -55,10 +55,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -67,7 +67,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -169,26 +169,26 @@ bindsym $mod+r mode "resize"
 
 
 bar {
-	position top
         status_command i3status
+	position top
         colors {
               background #32302f
               statusline #ebdbb2
               separator #ebdbb2
 	      inactive_workspace #32302f #32302f #ebdbb2
-	      focused_workspace #ebdbb2 #32302f #ebdbb2
+	      focused_workspace #32302f #ebdbb2 #32302f
         }
 }
 
 # my stuff
 exec --no-startup-id xrdb ~/.Xresources
-exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
-exec --no-startup-id ~/.fehbg
+#exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
+#exec --no-startup-id ~/.fehbg
 
 
 for_window [class="^.*"] border pixel 2 
 
-# class                  border  bg      text    ind     child
-client.focused           #ebdbb2 #32302f #ebdbb2 #ebdbb2 #ebdbb2
-client.unfocused         #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
-client.focused_inactive  #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
+# class                   border  bg      text    ind     child
+client.focused            #ebdbb2 #32302f #ebdbb2 #ebdbb2 #ebdbb2
+#client.unfocused         #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
+#client.focused_inactive  #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
