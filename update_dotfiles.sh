@@ -1,13 +1,13 @@
 #!/bin/bash
 
-cp ./.Xdefaults $HOME
-cp ./.bashrc $HOME
-cp ./.fehbg $HOME
-cp ./.xinitrc $HOME
-cp ./.profile $HOME
+cp $HOME/.dotfiles/.Xresources $HOME
+cp $HOME/.dotfiles/.bashrc $HOME
+cp $HOME/.dotfiles/.fehbg $HOME
+cp $HOME/.dotfiles/.xinitrc $HOME
+cp $HOME/.dotfiles/.profile $HOME
 
-cp ./.config/i3/config $HOME/.config/i3
-cp ./.config/i3status/config $HOME/.config/i3status
+cp $HOME/.dotfiles/.config/i3/config $HOME/.config/i3
+cp $HOME/.dotfiles/.config/i3status/config $HOME/.config/i3status
 
-cp -R ./wallpaper $HOME
+cp -R $HOME/.dotfiles/wallpaper $HOME
 
