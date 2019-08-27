@@ -10,9 +10,5 @@ PS1='[\u@\h \W]\$ '
 
 
 echo
-echo
-echo
-echo "                   \(^_^)/       Welcome back, $USER!"
-echo
-echo
+echo "  \(^_^)/       Welcome back, $USER!"
 echo
