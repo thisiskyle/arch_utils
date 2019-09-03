@@ -180,15 +180,13 @@ bar {
         }
 }
 
-# my stuff
-exec --no-startup-id xrdb ~/.Xresources
-#exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
-exec --no-startup-id ~/.fehbg
-
-
-for_window [class="^.*"] border pixel 2 
-
 # class                   border  bg      text    ind     child
 client.focused            #ebdbb2 #32302f #ebdbb2 #ebdbb2 #ebdbb2
 #client.unfocused         #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
 #client.focused_inactive  #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
+
+for_window [class="^.*"] border pixel 2 
+
+#exec --no-startup-id xrandr --output VGA-1 --mode 1920x1080
+exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpaper/skullkid2.jpg
