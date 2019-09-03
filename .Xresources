@@ -2,7 +2,7 @@
 !! Colorscheme
 
 ! special
-*.foreground: #93a1a1
+*.foreground: #ebdbb2
 *.background: #32302f
 *.cursorColor: #afbfbf
 
@@ -41,3 +41,5 @@
 
 URxvt.scrollBar: false
 URxvt.boldFont:
+URxvt.iso14755: false
+URxvt.iso14755_52: false
