@@ -1,4 +1,4 @@
 #!/bin/bash
 
 sudo pacman -Syu
-sudo pacman -S vim neofetch feh dmenu bmon ranger lm_sensors qutebrowser
+sudo pacman -S vim neofetch feh dmenu bmon lm_sensors qutebrowser
