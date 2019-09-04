@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sudo pacman -S neofetch feh dmenu htop
+sudo pacman -Syu
+sudo pacman -S neofetch feh dmenu htop ranger
