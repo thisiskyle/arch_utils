@@ -183,12 +183,12 @@ bar {
 gaps inner 7
 gaps outer 1
 
-# class                   border  bg      text    ind     child
-client.focused            #ebdbb2 #32302f #ebdbb2 #ebdbb2 #ebdbb2
-client.unfocused          #32302f #32302f #ebdbb2 #ebdbb2 #32302f
+# class        border  bg      text    ind     child
+client.focused #458588 #32302f #ebdbb2 #ebdbb2 #ebdbb2
+client.unfocused #32302f #32302f #ebdbb2 #ebdbb2 #32302f
 #client.focused_inactive  #ebdbb2 #32302f #ebdbb2 #ebdbb2 #32302f
 
-for_window [class="^.*"] border pixel 0 
+for_window [class="^.*"] border pixel 2 
 #for_window [class="^.*"] floating enabled 
 
 exec --no-startup-id xrdb ~/.Xresources
