@@ -1,4 +1,32 @@
 #!/bin/bash
 
+echo
+echo "========================== Running Updates"
+echo
+
 sudo pacman -Syu
-sudo pacman -S vim neofetch feh dmenu bmon ranger lm_sensors
+
+echo
+echo "========================== Installing Basic Packages"
+echo
+
+sudo pacman -S i3-gaps vim neofetch feh dmenu go
+
+echo
+echo "========================== Installing Yay"
+echo
+
+git clone https://aur.archlinux.org/yay.git ~/yay
+cd ~/yay
+makepkg -i
+
+echo "========================== Removing Build Files"
+
+cd ..
+sudo rm -R ~/yay
+
+echo "========================== Copying Dotfiles"
+
+$HOME/.dotfiles/cpToHome.sh
+
+echo "========================== Done!"
