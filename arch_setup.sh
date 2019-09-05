@@ -10,7 +10,7 @@ echo
 echo "========================== Installing Basic Packages"
 echo
 
-sudo pacman -S i3-gaps vim neofetch feh dmenu go
+sudo pacman -S i3-gaps vim neofetch feh dmenu go qutebrowser
 
 echo
 echo "========================== Installing Yay"
