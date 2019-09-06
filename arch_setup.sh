@@ -14,9 +14,6 @@ cd $HOME
 sudo rm -R $HOME/yay
 sudo yay -Syu
 
-echo "========================== Installing GoTop"
-sudo yay -S gotop
-
 echo "========================== Downloading Simple Terminal"
 wget dl.suckless.org/st/st-0.8.2.tar.gz
 tar -zvxf $HOME/st-0.8.2.tar.gz
@@ -27,5 +24,6 @@ $HOME/.dotfiles/cpToHome.sh
 echo "========================== Installing Simple Terminal"
 cd $HOME/st-0.8.2
 sudo make clean install
+rm $HOME/st-0.8.2.tar.gz
 
 echo "========================== Done!"
