@@ -1,10 +1,10 @@
 #!/bin/bash
 
-echo "========================== Running Updates"
+echo "========================== Updating Arch"
 sudo pacman -Syu
 
 echo "========================== Installing Basic Packages"
-sudo pacman -S i3-gaps i3blocks vim neofetch feh dmenu go qutebrowser lightdm
+sudo pacman -S i3-gaps i3blocks vim neofetch feh dmenu go qutebrowser wget xorg xorg-xinit
 
 echo "========================== Installing Yay"
 git clone https://aur.archlinux.org/yay.git ~/yay
@@ -13,6 +13,9 @@ makepkg -i
 cd $HOME 
 sudo rm -R $HOME/yay
 sudo yay -Syu
+
+echo "========================== Installing gotop"
+yay -S gotop
 
 echo "========================== Downloading Simple Terminal"
 wget dl.suckless.org/st/st-0.8.2.tar.gz
