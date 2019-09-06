@@ -12,6 +12,10 @@ cd $HOME/yay
 makepkg -i
 cd $HOME 
 sudo rm -R $HOME/yay
+sudo yay -Syu
+
+echo "========================== Installing GoTop"
+sudo yay -S gotop
 
 echo "========================== Downloading Simple Terminal"
 wget dl.suckless.org/st/st-0.8.2.tar.gz
