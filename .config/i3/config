@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -193,5 +193,4 @@ client.focused          #32302f #32302f #ebdbb2 #ebdbb2 #ebdbb2
 client.focused_inactive #32302f #32302f #ebdbb2 #ebdbb2 #32302f
 client.unfocused        #32302f #32302f #ebdbb2 #458588 #32302f
 
-exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpaper/skullkid.jpg

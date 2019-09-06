@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cp $HOME/.dotfiles/.Xresources $HOME
 cp $HOME/.dotfiles/.bashrc $HOME
 cp $HOME/.dotfiles/.xinitrc $HOME
 cp $HOME/.dotfiles/.profile $HOME
