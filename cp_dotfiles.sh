@@ -5,7 +5,13 @@ if [ "$1" == "-install" ] || [ "$1" == "-i" ]
 then
 
     echo "Installing dotfiles"
-    mkdir $HOME/.config/i3/
+
+    if [ -d "$HOME/.config/i3" ]
+    then
+
+    else
+        mkdir $HOME/.config/i3/
+    fi
 
     cp $HOME/.dotfiles/.bashrc $HOME
     cp $HOME/.dotfiles/st-0.8.2/config.h $HOME/st-0.8.2/config.h
