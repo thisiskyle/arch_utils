@@ -6,10 +6,8 @@ then
 
     echo "Installing dotfiles"
 
-    if [ -d "$HOME/.config/i3" ]
+    if [ ! -d "$HOME/.config/i3" ]
     then
-
-    else
         mkdir $HOME/.config/i3/
     fi
 

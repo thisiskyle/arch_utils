@@ -196,4 +196,5 @@ client.focused          #32302f #32302f #ebdbb2 #ebdbb2 #ebdbb2
 client.focused_inactive #32302f #32302f #ebdbb2 #ebdbb2 #32302f
 client.unfocused        #32302f #32302f #ebdbb2 #458588 #32302f
 
+#exec --no-startup-id xrandr --output Virtual-1 --mode 1440x900 --rate 60
 exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpaper/skullkid.jpg
