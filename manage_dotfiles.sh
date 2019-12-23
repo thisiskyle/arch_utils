@@ -16,6 +16,7 @@ then
     cp $HOME/.dotfiles/.xinitrc $HOME
     cp $HOME/.dotfiles/.profile $HOME
     cp $HOME/.dotfiles/.config/i3/config $HOME/.config/i3/
+    cp $HOME/.dotfiles/.config/i3blocks/config $HOME/.config/i3blocks/
 
 elif [ "$1" == "-save" ] || [ "$1" == "-s" ]
 then
@@ -27,5 +28,7 @@ then
     cp $HOME/.xinitrc $HOME/.dotfiles/.xinitrc
     cp $HOME/.profile $HOME/.dotfiles/.profile
     cp $HOME/.config/i3/config $HOME/.dotfiles/.config/i3/
+    cp $HOME/.config/i3blocks/config $HOME/.dotfiles/.config/i3blocks/
 fi
 
+echo "Done!"

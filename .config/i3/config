@@ -171,7 +171,7 @@ bindsym $mod+r mode "resize"
 
 bar {
         status_command i3blocks
-        mode hide
+        #mode hide
         hidden_state hide
         modifier Mod1
         position bottom
