@@ -17,17 +17,15 @@ sudo yay -Syu
 echo "========================== Installing gotop"
 yay -S gotop
 
-echo "========================== Downloading Simple Terminal"
+echo "========================== Installing Simple Terminal"
 curl -o st-0.8.2.tar.gz dl.suckless.org/st/st-0.8.2.tar.gz
 tar -zvxf $HOME/st-0.8.2.tar.gz
-
-echo "========================== Installing Dotfiles"
-$HOME/.dotfiles/cp_dotfiles.sh -i
-
-echo "========================== Installing Simple Terminal"
 cd $HOME/st-0.8.2
 sudo make clean install
 rm $HOME/st-0.8.2.tar.gz
+
+echo "========================== Installing Dotfiles"
+$HOME/.dotfiles/manage_dotfiles.sh -i
 
 echo "========================== Installing Vim Config"
 git clone https://github.com/thisiskyle/vimfiles $HOME/.vim
