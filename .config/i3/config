@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Control
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -184,8 +184,8 @@ bar {
             separator  #458588
 
             #                  border   fill    text
-            inactive_workspace #32302f  #32302f #ebdbb2
-            focused_workspace  #ebdbb2  #ebdbb2 #32302f
+            inactive_workspace #32302f  #32302f #282828
+            focused_workspace  #32302f  #32302f #ebdbb2
         }
 }
 

@@ -10,17 +10,23 @@
 separator=true
 separator_block_width=15
 
-[documentation]
-full_text=Documentation
-website=https://vivien.github.io/i3blocks
-command=xdg-open "$website"
-color=#f12711
+#[documentation]
+#full_text=Documentation
+#website=https://vivien.github.io/i3blocks
+#command=xdg-open "$website"
+#color=#f12711
 
-[greetings]
-color=#f5af19
-command=echo "Hello, $USER!"
+#[greetings]
+#color=#f5af19
+#command=echo "Hello, $USER!"
+#interval=once
+
+[ip]
+command=hostname -i | awk '{print $1 }'
 interval=once
 
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%m-%d-%Y %H:%M:%S '
 interval=1
+
+
