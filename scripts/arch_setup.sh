@@ -20,7 +20,8 @@ yay -S gotop
 echo Installing Simple Terminal
 curl -o st-0.8.2.tar.gz dl.suckless.org/st/st-0.8.2.tar.gz
 tar -zvxf $HOME/st-0.8.2.tar.gz
-cd $HOME/st-0.8.2
+mv $HOME/st-0.8.2 $HOME/.config/st
+cd $HOME/.config/st
 sudo make clean install
 rm $HOME/st-0.8.2.tar.gz
 
