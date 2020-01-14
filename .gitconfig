@@ -1,0 +1,6 @@
+[user]
+	email = kyle.ericson1@gmail.com
+	name = kyle
+[alias]
+    lg = log --all --decorate --oneline --graph
+    ca = add . && git commit

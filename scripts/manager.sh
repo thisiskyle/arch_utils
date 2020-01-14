@@ -12,6 +12,7 @@ dotfiles=(\
     ".bashrc" \
     ".xinitrc" \
     ".profile" \
+    ".gitconfig" \
     ".config/i3/config" \
     ".config/i3blocks/config" \
     ".config/rofi/config" \
