@@ -22,6 +22,13 @@ dotfiles=(\
 dotfile_repo="${HOME}/.dotfiles"
 
 
+copy_from_to() {
+    for dotfile in "${dotfiles[@]}"
+    do
+        cp $1/${dotfile} $2/${dotfile}
+    done
+}
+
 
 
 if [ "$1" == "-install" ] || [ "$1" == "-i" ]
@@ -43,20 +50,14 @@ then
         mkdir $HOME/.config/rofi/ 
     fi
 
-    for dotfile in "${dotfiles[@]}"
-    do
-        cp "${dotfile_repo}/${dotfile}" "${HOME}/${dotfile}"
-    done
+    copy_from_to "${dotfile_repo}" "${HOME}"
 
 
 elif [ "$1" == "-save" ] || [ "$1" == "-s" ]
 then 
     echo "Saving dotfiles"
 
-    for dotfile in "${dotfiles[@]}"
-    do
-        cp "${HOME}/${dotfile}" "${dotfile_repo}/${dotfile}"
-    done
+    copy_from_to "${HOME}" "${dotfile_repo}"
 fi
 
 echo "Done!"
