@@ -24,9 +24,13 @@ mv $HOME/st-0.8.2 $HOME/.config/st
 cd $HOME/.config/st
 sudo make clean install
 rm $HOME/st-0.8.2.tar.gz
+# @todo I might need to change permissions on config.h to be able to install the new dotfile
 
 echo Installing Dotfiles
-$HOME/.dotfiles/manage_dotfiles.sh -i
+git clone https://github.com/thisiskyle/dotfiles $HOME/.dotfiles
+$HOME/.dotfiles/scripts/manager.sh -i
+
+# @todo Here I should recompile st with the new config.h
 
 echo Installing Vim Config
 git clone https://github.com/thisiskyle/vimfiles $HOME/.vim

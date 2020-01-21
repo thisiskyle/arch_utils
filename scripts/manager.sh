@@ -10,6 +10,7 @@ fi
 
 dotfiles=(\
     ".bashrc" \
+    ".bash_profile" \
     ".xinitrc" \
     ".profile" \
     ".gitconfig" \
