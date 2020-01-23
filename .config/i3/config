@@ -13,11 +13,11 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:Courier Prime Code 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
+font pango:Courier Prime Code 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -174,7 +174,7 @@ bindsym $mod+r mode "resize"
 
 bar {
         status_command i3blocks
-        #mode hide
+        mode hide
         hidden_state hide
         modifier Mod1
         position bottom
@@ -192,7 +192,7 @@ bar {
 gaps inner 7
 gaps outer 2
 
-for_window [class="^.*"] border pixel 1 
+for_window [class="^.*"] border pixel 2 
 
 # class                 border  bg      text    ind     child_border
 client.focused          #32302f #32302f #ebdbb2 #ebdbb2 #ebdbb2
@@ -201,3 +201,4 @@ client.unfocused        #32302f #32302f #ebdbb2 #458588 #32302f
 
 #exec --no-startup-id xrandr --output Virtual-1 --mode 1440x900 --rate 60
 exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpaper/skullkid.jpg
+exec picom &

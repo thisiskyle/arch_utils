@@ -17,6 +17,7 @@ dotfiles=(\
     ".config/i3/config" \
     ".config/i3blocks/config" \
     ".config/rofi/config" \
+    ".config/picom/picom.conf" \
     ".config/st/config.h" \
 ) 
 
