@@ -38,18 +38,23 @@ then
     echo "Installing dotfiles"
 
     if [ ! -d "$HOME/.config/i3" ]
-    then 
+	then 
         mkdir $HOME/.config/i3/ 
     fi
 
     if [ ! -d "$HOME/.config/i3blocks" ]
-    then 
+	then 
         mkdir $HOME/.config/i3blocks/ 
     fi
 
     if [ ! -d "$HOME/.config/rofi" ]
-    then 
+	then 
         mkdir $HOME/.config/rofi/ 
+    fi
+
+    if [ ! -d "$HOME/.config/picom" ]
+	then
+        mkdir $HOME/.config/picom/
     fi
 
     copy_from_to "${dotfile_repo}" "${HOME}"
