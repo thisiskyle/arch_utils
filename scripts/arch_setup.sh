@@ -17,6 +17,7 @@ sudo yay -Syu
 
 echo ------------------- Installing fonts
 yay -S ttf-courier-prime
+yay -S ttf-cascadia-code
 
 
 echo ------------------- Installing simple terminal
