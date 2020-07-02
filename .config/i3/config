@@ -209,6 +209,11 @@ client.focused          #32302f #32302f #ebdbb2 #ebdbb2 #ebdbb2
 client.focused_inactive #32302f #32302f #ebdbb2 #ebdbb2 #32302f
 client.unfocused        #32302f #32302f #ebdbb2 #458588 #32302f
 
-exec --no-startup-id xrandr --output Virtual-1 --mode 1920x1080 --rate 60
+# this section is for setting the resolution for a VM
+# the commands will work on a physical box but the diaply name needs to be changed
+#exec --no-startup-id xrandr --newmode "1920x1080_144"  451.72  1920 2080 2296 2672  1080 1081 1084 1174  -HSync +Vsync
+#exec --no-startup-id xrandr --addmode Virtual-1 "1920x1080_144"
+#exec --no-startup-id xrandr --output Virtual-1 --mode "1920x1080_144"
+
 exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpaper/skullkid.jpg
 exec picom &
