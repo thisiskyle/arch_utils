@@ -1,4 +1,4 @@
 rofi.theme: /usr/share/rofi/themes/gruvbox-dark-soft.rasi
 rofi.modi: window,run,ssh
-rofi.font: Courier new 8
-rofi.lines: 20
+rofi.font: Cascadia Code 8
+rofi.lines: 5 
