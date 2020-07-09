@@ -4,7 +4,14 @@ echo ------------------- Updating Arch
 sudo pacman -Syu
 
 echo ------------------- Installing basic packages
-sudo pacman -S i3-gaps i3blocks vim neofetch feh rofi qutebrowser xorg xorg-xinit xorg-server picom
+sudo pacman -S i3-gaps i3blocks vim neofetch feh rofi qutebrowser xorg xorg-xinit xorg-server
+
+
+echo ------------------- Installing picom
+git clone https://github.com/ibhagwan/picom-ibhagwan-git $HOME/picom
+cd $HOME/picom
+makepkg -si
+
 
 echo ------------------- Installing Yay
 git clone https://aur.archlinux.org/yay.git ~/yay
@@ -40,5 +47,6 @@ sudo make clean install
 echo ------------------- Installing Vim config
 git clone https://github.com/thisiskyle/vimfiles $HOME/.vim
 cp $HOME/.vim/.vimrc $HOME/
+
 
 echo ------------------- Arch setup complete!
