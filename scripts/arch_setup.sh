@@ -28,6 +28,11 @@ install_yay() {
     sudo yay -Syu
 }
 
+install_fonts() {
+    sudo pacman -S ttf-fira-code
+
+}
+
 install_st() {
     echo ------------------- Installing simple terminal
     curl -o st-0.8.2.tar.gz dl.suckless.org/st/st-0.8.2.tar.gz
@@ -60,6 +65,7 @@ install_basic_packages
 install_picom
 install_yay
 install_st
+install_fonts
 install_dotfiles
 compile_st
 download_vimrc
