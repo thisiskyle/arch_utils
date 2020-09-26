@@ -25,11 +25,12 @@ install_yay() {
     makepkg -si
     cd $HOME 
     sudo rm -R $HOME/yay
-    sudo yay -Syu
+    yay -Syu
 }
 
 install_fonts() {
     sudo pacman -S ttf-fira-code
+    yay -S ttf-fixedsys-excelsior-linux
 
 }
 

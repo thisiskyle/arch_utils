@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Fixedsys Excelsior:pixelsize=16:antialias=true:autohint=true";
+static int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
