@@ -27,34 +27,39 @@ dotfile_repo="${HOME}/.dotfiles"
 copy_from_to() {
     for dotfile in "${dotfiles[@]}"
     do
-        cp $1/${dotfile} $2/${dotfile}
+        cp ${1}/${dotfile} ${2}/${dotfile}
     done
 }
 
 
 
-if [ "$1" == "-install" ] || [ "$1" == "-i" ]
+if [ "${1}" == "-install" ] || [ "${1}" == "-i" ]
 then 
     echo "Installing dotfiles"
 
-    if [ ! -d "$HOME/.config/i3" ]
-	then 
-        mkdir $HOME/.config/i3/ 
+    if [ ! -d "${HOME}/.config" ]
+    then
+        mkdir "${HOME}/.config" 
     fi
 
-    if [ ! -d "$HOME/.config/i3blocks" ]
+    if [ ! -d "${HOME}/.config/i3" ]
 	then 
-        mkdir $HOME/.config/i3blocks/ 
+        mkdir "${HOME}/.config/i3/" 
     fi
 
-    if [ ! -d "$HOME/.config/rofi" ]
+    if [ ! -d "${HOME}/.config/i3blocks" ]
 	then 
-        mkdir $HOME/.config/rofi/ 
+        mkdir ${HOME}/.config/i3blocks/ 
     fi
 
-    if [ ! -d "$HOME/.config/picom" ]
+    if [ ! -d "${HOME}/.config/rofi" ]
+	then 
+        mkdir ${HOME}/.config/rofi/ 
+    fi
+
+    if [ ! -d "${HOME}/.config/picom" ]
 	then
-        mkdir $HOME/.config/picom/
+        mkdir ${HOME}/.config/picom/
     fi
 
     copy_from_to "${dotfile_repo}" "${HOME}"

@@ -4,7 +4,7 @@ echo ------------------- Updating Arch
 sudo pacman -Syu
 
 echo ------------------- Installing basic packages
-sudo pacman -S i3-gaps i3blocks vim neofetch feh rofi qutebrowser xorg xorg-xinit xorg-server
+sudo pacman -S base-devel i3-gaps i3blocks vim neofetch feh rofi qutebrowser xorg xorg-xinit xorg-server
 
 
 echo ------------------- Installing picom
@@ -22,14 +22,10 @@ sudo rm -R $HOME/yay
 sudo yay -Syu
 
 
-echo ------------------- Installing fonts
-yay -S ttf-courier-prime
-yay -S ttf-cascadia-code
-
-
 echo ------------------- Installing simple terminal
 curl -o st-0.8.2.tar.gz dl.suckless.org/st/st-0.8.2.tar.gz
 tar -zvxf $HOME/st-0.8.2.tar.gz
+mkdir -p $HOME/.config
 mv $HOME/st-0.8.2 $HOME/.config/st
 rm $HOME/st-0.8.2.tar.gz
 sudo chown root:users $HOME/.config/st/config.h
