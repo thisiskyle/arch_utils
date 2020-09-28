@@ -46,7 +46,7 @@ install_st() {
 
 install_dotfiles() {
     echo ------------------- Installing dotfiles
-    $HOME/.dotfiles/scripts/manager.sh -i
+    $HOME/.dotfiles/scripts/dotman.sh -i
 }
 
 compile_st() {

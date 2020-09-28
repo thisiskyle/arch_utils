@@ -6,22 +6,27 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
-dotfiles=(\
-    ".bashrc" \
-    ".bash_profile" \
-    ".xinitrc" \
-    ".profile" \
-    ".gitconfig" \
-    ".tmux.conf" \
-    ".config/i3/config" \
-    ".config/i3blocks/config" \
-    ".config/rofi/config" \
-    ".config/picom/picom.conf" \
-    ".config/st/config.h" \
-) 
 
-dotfile_repo="${HOME}/.dotfiles"
+. ./dotman.conf
 
+
+show_help() {
+    cat << EOF
+
+
+    Usage: ${0##*/} [option]
+
+    Manage your dotfiles with Dotman!
+
+        -s, --save                   Update the stored dotfiles, with the currently used dotfiles
+
+        -i, --install                Install the stored dotfiles in the ${HOME} folder      
+
+        -h, --help, -u, --usage, -?  Display this help text
+
+
+EOF
+}
 
 copy_from_to() {
     for dotfile in "${dotfiles[@]}"
@@ -31,27 +36,53 @@ copy_from_to() {
 }
 
 make_directories() {
-    mkdir -p "${HOME}/.config" 
-    mkdir -p "${HOME}/.config/i3/" 
-    mkdir -p "${HOME}/.config/i3blocks/" 
-    mkdir -p "${HOME}/.config/rofi/"
-    mkdir -p "${HOME}/.config/picom/"
+    for dotfile in "${dotfiles[@]}"
+    do
+        mkdir -p "${HOME}/${dotfile}"
+        rm -r "${HOME}/${dotfile}"
+    done
 }
 
-
-if [ "${1}" == "-install" ] || [ "${1}" == "-i" ]
-then 
-
+install() {
     echo "Installing dotfiles"
     make_directories
     copy_from_to "${dotfile_repo}" "${HOME}"
+}
 
-elif [ "$1" == "-save" ] || [ "$1" == "-s" ]
-then 
-
+save() {
     echo "Saving dotfiles"
     copy_from_to "${HOME}" "${dotfile_repo}"
+}
 
-fi
 
-echo "Done!"
+while :;
+do
+    case "${1}" in
+        "-s"|"--save") 
+            save
+            ;;
+        "-i"|"--install") 
+            install
+            ;;
+        "-h"|"-help"|"-u"|"--usage"|"-?") 
+            _show_help
+            exit 0
+            ;;
+        -?*)
+            echo "Unknown option ${1} ignored"
+            ;;
+        --) # end of options
+            shift
+            break
+            ;;
+        *)
+            break
+            ;;
+    esac
+    # shift to next arg
+    shift
+done
+
+
+
+echo "COMPLETE!"
