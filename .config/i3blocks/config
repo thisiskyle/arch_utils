@@ -22,8 +22,8 @@ separator_block_width=15
 #interval=once
 
 [ip]
-command=hostname -i | awk '{print $1 }'
-interval=once
+#command=hostname -i | awk '{print $1 }'
+#interval=once
 
 [time]
 command=date '+%m-%d-%Y %H:%M:%S '

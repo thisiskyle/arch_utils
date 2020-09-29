@@ -7,12 +7,11 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 
-. ./dotman.conf
+. "${HOME}"/.dotfiles/scripts/dotman.conf
 
 
 show_help() {
     cat << EOF
-
 
     Usage: ${0##*/} [option]
 
@@ -23,7 +22,6 @@ show_help() {
         -i, --install                Install the stored dotfiles in the ${HOME} folder      
 
         -h, --help, -u, --usage, -?  Display this help text
-
 
 EOF
 }
@@ -65,7 +63,7 @@ do
             install
             ;;
         "-h"|"-help"|"-u"|"--usage"|"-?") 
-            _show_help
+            show_help
             exit 0
             ;;
         -?*)
