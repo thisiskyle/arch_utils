@@ -7,7 +7,7 @@ update() {
 
 install_basic_packages() {
     echo ------------------- Installing basic packages
-    sudo pacman -S tmux base-devel i3-gaps i3blocks vim neofetch feh rofi qutebrowser xorg xorg-xinit xorg-server
+    sudo pacman -S base-devel i3-gaps i3blocks vim neofetch feh rofi firefox xorg xorg-xinit xorg-server
 }
 
 install_picom() {
