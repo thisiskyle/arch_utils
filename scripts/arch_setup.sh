@@ -7,7 +7,7 @@ update() {
 
 install_basic_packages() {
     echo ------------------- Installing basic packages
-    sudo pacman -S base-devel i3-gaps i3blocks vim neofetch feh rofi firefox xorg xorg-xinit xorg-server
+    sudo pacman -S base-devel i3-gaps i3blocks vim neofetch feh rofi firefox xorg xorg-xinit xorg-server screen
 }
 
 install_picom() {
@@ -29,6 +29,7 @@ install_yay() {
 }
 
 install_fonts() {
+    echo ------------------- Installing fonts
     sudo pacman -S ttf-fira-code
     yay -S ttf-fixedsys-excelsior-linux
 
@@ -50,7 +51,7 @@ install_dotfiles() {
 }
 
 compile_st() {
-    echo ------------------- Compile simple terminal
+    echo ------------------- Compiling simple terminal
     cd $HOME/.config/st
     sudo make clean install
 }
