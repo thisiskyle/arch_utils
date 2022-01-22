@@ -14,4 +14,4 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # uncomment this line to start X on login
-pgrep 'tmux|startx' || startx
+#pgrep 'screen|tmux|startx' || startx

@@ -4,4 +4,4 @@
 #
 # Executed by startx (run your window manager from here)
 
-exec i3
+exec dwm

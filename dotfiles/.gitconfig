@@ -1,0 +1,5 @@
+[user]
+	email = 
+	name = Kyle
+[alias]
+	dog = log --all --decorate --oneline --graph
