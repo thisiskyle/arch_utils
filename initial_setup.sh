@@ -15,28 +15,39 @@ cd $HOME/yay && makepkg -si
 echo "------------------- Updating yay"
 yay -Syu
 
+echo "------------------- Cloning suckless software"
+
 echo "------------------- Cloning st"
-git clone https://git.suckless.org/st $HOME/st
+git clone https://git.suckless.org/st $HOME/suckless/st
 
 echo "------------------- Cloning dwm"
-git clone https://git.suckless.org/dwm $HOME/dwm
+git clone https://git.suckless.org/dwm $HOME/suckless/dwm
 
 echo "------------------- Cloning dmenu"
-git clone https://git.suckless.org/dmenu $HOME/dmenu
+git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
+
+echo "------------------- Cloning slock"
+git clone https://git.suckless.org/slock $HOME/suckless/slock
 
 echo "------------------- Installing dotfiles"
 $HOME/arch_utils/dotfiles_install.sh
 
-echo "------------------- Installing st"
-cd $HOME/st
+echo "------------------- Compiling suckless software"
+
+echo "------------------- Compiling st"
+cd $HOME/suckless/st
 sudo make clean install
 
-echo "------------------- Installing dwm"
-cd $HOME/dwm
+echo "------------------- Compiling dwm"
+cd $HOME/suckless/dwm
 sudo make clean install
 
-echo "------------------- Installing dmenu"
-cd $HOME/dmenu
+echo "------------------- Compiling dmenu"
+cd $HOME/suckless/dmenu
+sudo make clean install
+
+echo "------------------- Compiling slock"
+cd $HOME/suckless/slock
 sudo make clean install
 
 echo "------------------- Downloading vim config package"
