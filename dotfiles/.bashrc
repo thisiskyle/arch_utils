@@ -10,3 +10,4 @@ PS1='[\u@\h \W]\$ '
 EDITOR="vim"
 VISUAL="vim"
 
+cd $HOME
