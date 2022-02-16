@@ -16,7 +16,7 @@ feh --bg-scale $HOME/arch_utils/wallpaper/Other_27.jpg &
 
 # set the dwm status bar text
 while true; do 
-    d=$(date +"%d/%m/%Y")
+    d=$(date +"%m/%d/%Y")
     t=$(date +"%T")
     gpu=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)
     #cpu=$(cat /sys/class/thermal/thermal_zone0/temp | sed 's/000$/°C/')
