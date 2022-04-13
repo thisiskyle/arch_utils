@@ -7,7 +7,6 @@
  */
 static char *font = "Iosevka Extended:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
-
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -123,8 +122,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
+unsigned int defaultfg = 8;
+unsigned int defaultbg = 15;
 unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 256;
 
