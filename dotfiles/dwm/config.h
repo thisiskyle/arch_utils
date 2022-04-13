@@ -12,15 +12,17 @@ static const char col_cyan[]        = "#005577";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray4[]       = "#ededed";
 static const char col_gray235[]     = "#262626";
 static const char col_gray247[]     = "#9e9e9e";
 static const char col_white[]       = "#ffffff";
+static const char col_white2[]      = "#dddddd";
+static const char col_black[]       = "#000000";
 
 static const char *colors[][3]      = {
 	/*               fg           bg           border   */
-	[SchemeNorm] = { col_gray235, col_gray247, col_gray235 }, // window unselected
-	[SchemeSel]  = { col_gray247, col_gray235, col_gray247 }, // selected window
+	[SchemeNorm] = { col_black, col_gray4, col_gray4 }, // window unselected
+	[SchemeSel]  = { col_black, col_gray4, col_black }, // selected window
 };
 
 /* tagging */
@@ -39,8 +41,8 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */

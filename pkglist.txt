@@ -19,3 +19,4 @@ pulseaudio
 nvidia
 nvidia-settings
 flameshot
+mpv

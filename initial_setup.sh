@@ -15,6 +15,9 @@ cd $HOME/yay && makepkg -si
 echo "------------------- Updating yay"
 yay -Syu
 
+echo "------------------- Installing AUR packages"
+yay -S yt-dlp yt-dlp-drop-in 
+
 echo "------------------- Cloning suckless software"
 
 echo "------------------- Cloning st"
