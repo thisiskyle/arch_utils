@@ -95,7 +95,7 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
-    [0] = "#101010", // black   
+    [0] = "#000000", // black   
     [1] = "#7c7c7c", // red     
     [2] = "#8e8e8e", // green   
     [3] = "#a0a0a0", // yellow  
@@ -103,14 +103,14 @@ static const char *colorname[] = {
     [5] = "#747474", // magenta 
     [6] = "#868686", // cyan    
     [7] = "#b9b9b9", // white   
-    [8]  = "#525252", // black  
+    [8]  = "#525252", // gray/black  
     [9]  = "#7c7c7c", // red    
     [10] = "#8e8e8e", // green  
     [11] = "#a0a0a0", // yellow 
     [12] = "#686868", // blue   
     [13] = "#747474", // magenta
     [14] = "#868686", // cyan   
-    [15] = "#f7f7f7", // white  
+    [15] = "#ffffff", // white  
 
     // special colors 
     [256] = "#262626", // background
@@ -122,10 +122,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 8;
+unsigned int defaultfg = 0;
 unsigned int defaultbg = 15;
-unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 256;
+unsigned int defaultcs = 0;
+static unsigned int defaultrcs = 15;
 
 /*
  * Default shape of cursor
