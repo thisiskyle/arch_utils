@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -22,7 +22,7 @@ static const char col_black[]       = "#000000";
 
 static const char *colors[][3]      = {
 	/*               fg           bg           border   */
-	[SchemeNorm] = { col_black, col_gray5, col_gray247 }, // window unselected
+	[SchemeNorm] = { col_black, col_gray5, col_black }, // window unselected
 	[SchemeSel]  = { col_black, col_gray5, col_black }, // selected window
 };
 
