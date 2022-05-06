@@ -14,14 +14,41 @@ feh --bg-scale $HOME/arch_utils/wallpaper/cat.png &
 #xrandr --output Virtual-1 --mode "1920x1080_60.00"
 #xrandr --output DP-4 --mode "1920x1080" --rate "144" &
 
-# set the dwm status bar text
-while true; do 
-    d=$(date +"%m/%d/%Y")
-    t=$(date +"%T")
-    gpu=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)
-    #cpu=$(cat /sys/class/thermal/thermal_zone0/temp | sed 's/000$/°C/')
+# status bar stuff
+get_date() {
+    echo "$(date +"%m/%d/%Y")"
+}
 
-    xsetroot -name "| GPU ${gpu}°C | ${d} | ${t} ";
+get_time() {
+    echo "$(date +"%T")"
+}
+
+gpu() {
+    echo "GPU $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)°C"
+}
+
+cpu() {
+
+    read -r cpu a b c previdle rest < /proc/stat
+    prevtotal=$((a+b+c+previdle))
+
+    sleep 0.5
+
+    read -r cpu a b c idle rest < /proc/stat
+    total=$((a+b+c+idle))
+
+    echo "CPU $((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))%"
+
+}
+
+ram() {
+    echo "$(free -h | awk '/Mem:/ { print $3 }' | cut -f1 -d 'i')"
+}
+
+
+while true; do 
+
+    xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
     sleep 1s; 
 
 done &
