@@ -42,14 +42,14 @@ cpu() {
 }
 
 ram() {
-    echo "$(free -h | awk '/Mem:/ { print $3 }' | cut -f1 -d 'i')"
+    echo "RAM $(free -h | awk '/Mem:/ { print $3 }' | cut -f1 -d 'i')"
 }
 
 
 while true; do 
 
     xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
-    sleep 1s; 
+    sleep 0.5s; 
 
 done &
 
