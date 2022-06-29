@@ -16,6 +16,7 @@ pciutils
 usbutils
 alsa-utils
 pulseaudio
+pavucontrol
 nvidia
 nvidia-settings
 flameshot
