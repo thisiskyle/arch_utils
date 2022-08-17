@@ -8,6 +8,7 @@ alias ll='ls -al'
 
 EDITOR="vim"
 VISUAL="vim"
+WALLPAPER="${HOME}/arch_utils/wallpaper/cat.png"
 
 cd $HOME
 

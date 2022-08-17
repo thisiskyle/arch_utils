@@ -1,0 +1,10 @@
+.bashrc
+.bash_profile
+.xinitrc
+.profile
+.gitconfig
+/suckless/st/config.h
+/suckless/dwm/config.h
+/suckless/dwm/dwm.c
+/suckless/dmenu/config.h
+/suckless/slock/config.h

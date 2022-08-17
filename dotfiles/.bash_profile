@@ -1,4 +1,4 @@
 # $HOME/.bash_profile
 
-[[ -f ~/.profile ]] && . ~/.profile
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ${HOME}/.profile ]] && source ${HOME}/.profile
+[[ -f ${HOME}/.bashrc ]] && source ${HOME}/.bashrc

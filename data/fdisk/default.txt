@@ -1,0 +1,41 @@
+#
+#    This file is a list of commands to be executed by fdisk
+#    There are some things to be aware of before editing this file...
+#        - comments start with #
+#        - comments must start at the beginning of the line
+#        - empty lines are used as hitting <enter> in fdisk.
+#          so dont leave empty lines
+#
+#
+# clear the in memory partition table
+o
+# new partition
+n
+# primary partition
+p
+# partition number 1
+1
+# hit enter to select default, start at beginning of disk 
+
+# size of boot parttion
++1024M
+# new partition
+n
+# primary partition
+p
+# partion number 2
+2
+# hit enter to select default, start immediately after preceding partition
+
+# hit enter to select default, extend partition to end of disk
+
+# make a partition bootable
+a
+# bootable partition is partition 1 -- /dev/sda1
+1
+# print the in-memory partition table
+p
+# write the partition table
+w
+# and we're done
+q

@@ -5,7 +5,7 @@
 # Executed by startx (run your window manager from here)
 
 # set background
-feh --bg-scale $HOME/arch_utils/wallpaper/cat.png &
+feh --bg-scale ${WALLPAPER} &
 
 # set resolution and refresh rate
 # i dont think we really need these anymore

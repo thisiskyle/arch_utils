@@ -4,7 +4,7 @@ echo "------------------- Updating Arch"
 sudo pacman -Syu
 
 echo "------------------- Installing basic packages"
-sudo pacman -S - < $HOME/arch_utils/pkglist.txt
+sudo pacman -S - < $HOME/arch_utils/data/pkglist.txt
 
 echo "------------------- Cloning yay"
 git clone https://aur.archlinux.org/yay.git $HOME/yay
@@ -35,8 +35,6 @@ git clone https://git.suckless.org/slock $HOME/suckless/slock
 echo "------------------- Installing dotfiles"
 $HOME/arch_utils/dotfiles_install.sh
 
-echo "------------------- Compiling suckless software"
-
 echo "------------------- Compiling st"
 cd $HOME/suckless/st
 sudo make clean install
@@ -53,11 +51,20 @@ echo "------------------- Compiling slock"
 cd $HOME/suckless/slock
 sudo make clean install
 
-echo "------------------- Downloading vim config package"
-git clone https://github.com/thisiskyle/ke-vim-pack.git $HOME/.vim/pack/ke-vim-pack
+echo "------------------- Downloading vim config"
+git clone https://github.com/thisiskyle/vim.git $HOME/.vim
+
+echo "------------------- Creating symlink to .vimrc"
+ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
+
+
+echo "------------------- Sourcing .bash_profile"
+source ${HOME}/.bash_profile
+
+echo "------------------- Setting background"
 
 echo "------------------- Cleanup"
 cd $HOME 
 sudo rm -R $HOME/yay
 
-echo "------------------- Arch setup complete!"
+echo "------------------- Arch environment setup complete!"
