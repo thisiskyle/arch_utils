@@ -21,3 +21,9 @@ nvidia
 nvidia-settings
 flameshot
 mpv
+mtools
+dosfstools
+linux-headers 
+reflector
+xdg-utils 
+xdg-user-dirs 
