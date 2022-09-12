@@ -198,6 +198,7 @@ cp -R /arch_utils /mnt/home/${username}/
 # unmount the drives
 umount -R /mnt
 swapoff -a
+umount -R /mnt
 
 echo "Congrats, your installation (of Arch linux btw) is complete!"
 echo "Reboot now"
