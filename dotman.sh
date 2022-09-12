@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfileList="${HOME}/arch_utils/dotfiles.txt"
+dotfileList="${HOME}/arch_utils/config/dotfilelist.txt"
 dotfileStorage="${HOME}/arch_utils/dotfiles"
 
 

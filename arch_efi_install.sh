@@ -16,6 +16,11 @@
 # TODO/feature: Maybe here we can just give a little run down of what is about to happen
 #               with some warnings about the partitions and what not
 
+
+SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+
+source "${SCRIPT_DIR}/config/arch_install.conf"
+
 # get the target device from the user
 echo "\n!!!!! WARNING: THIS DEVICE WILL BE COMPLETELY ERASED !!!!!"
 echo -n "Target device (ex. /dev/sda): "
@@ -24,19 +29,18 @@ read target_dev
 # TODO/feature: here, maybe check to make sure that this device exists?
 #               then double check with user is this is correct, if not we abort
 
-# TODO/improve: here maybe we check if a file path to a config file was provided
-#               then check if it exists, we cant find one, then we can ask the questions
-#               otherwise, just use the config that was provided
+# ask user for hostname if config did not set it
+if [ -z ${target_hostname+x} ]; then
+    echo -n "Target hostname: "
+    read target_hostname
+fi
 
-
-# ask user for hostname
-echo -n "Target hostname: "
-read target_hostname
-
-# ask user for swapfile size in GB
-# TODO/improve: maybe we can check the amount of RAM and suggest a swapfile size?
-echo -n "Target swapfile size (GB): "
-read swap_size
+# if no set, ask user for swapfile size in GB
+if [ -z ${swap_size+x} ]; then
+    # TODO/improve: maybe we can check the amount of RAM and suggest a swapfile size?
+    echo -n "Target swapfile size (GB): "
+    read swap_size
+fi
 
 # verify that we got a number as a response
 reg="^[0-9]+$"
@@ -46,62 +50,47 @@ while ! [[ $swap_size =~ $reg ]]; do
 done
 
 # ask user for local timezone
-echo -n "Local timezone (ex. America/Detroit): "
-read local_timezone
+if [ -z ${local_timezone+x} ]; then
+    echo -n "Local timezone (ex. America/Detroit): "
+    read local_timezone
+fi
 
 # ask user for locale
-echo -n "Target Locale (ex. en_US.UTF-8): "
-read locale
+if [ -z ${locale+x} ]; then
+    echo -n "Target Locale (ex. en_US.UTF-8 UTF-8): "
+    read locale
+fi
 
-echo -n "Target username: "
-read username
+# ask user for lang
+if [ -z ${lang+x} ]; then
+    echo -n "Target lang (ex. en_US.UTF-8): "
+    read lang
+fi
+
+# if unset, ask for username input
+if [ -z ${username+x} ]; then
+    echo -n "Target username: "
+    read username
+fi
 
 # location of the swapfile
 swap_path="/swapfile"
 
 # location to save the script that will be used for arch-chroot
-arch_chroot_script="/root/temp.sh"
+arch_chroot_script="temp.sh"
 
 # set the full dev partition paths
 efiPart="${target_dev}1"
 rootPart="${target_dev}2"
 
-# There are the commands to be sent to fdisk for partitioning
-# you can use '#' for comments, comments must start on a new line
-# newlines are the same as hitting 'enter' so white space matters
-fdisk_cmd=$(cat << EOF
-# clear the in memory partition table
-o
-# new partition
-n
-# primary partition
-p
-# partition number
-1
-# hit enter to select default, start at beginning of disk 
+if [ -z ${fdisk_cmd+x} ]; then
+    echo "ERROR: fdisk_cmd unset. Aborting"
+    exit 1
+fi
 
-# size of EFI parttion
-+1024M
-# set partition type to EFI
-t
-ef
-# new partition
-n
-# primary partition
-p
-# partion number
-2
-# hit enter to select default, start immediately after preceding partition
-
-# hit enter to select default, extend partition to end of disk
-
-# write the partition table
-w
-# and we're done
-q
-
-EOF
-)
+# unmount the drives
+umount -R /mnt
+swapoff -a
 
 # set the time protocol
 echo "Setting time protocol sync"
@@ -137,12 +126,12 @@ echo "Mounting root"
 mount "${rootPart}" /mnt
 
 # create efi mount point
-echo "Making /mnt/boot/efi directory"
-mkdir /mnt/boot/efi
+echo "Making /mnt/efi directory"
+mkdir /mnt/efi
 
 # mount efi partition
 echo "Mounting EFI"
-mount "${efiPart}" /mnt/boot/efi
+mount "${efiPart}" /mnt/efi
 
 # install arch
 echo "Installing Arch with pacstrap"
@@ -164,25 +153,26 @@ echo "${swap_path}  none  swap  defaults  0 0" >> /etc/fstab
 ln -sf /usr/share/zoneinfo/${local_timezone} /etc/localtime
 hwclock --systohc
 echo "${locale}" >> /etc/locale.gen
-echo "LANG=${locale}" >> /etc/locale.conf
-export LANG=${locale}
 locale-gen
+
+echo "LANG=${lang}" >> /etc/locale.conf
+export LANG=${lang}
 
 echo "${target_hostname}" > /etc/hostname
 
-cat << EOF > /etc/hosts
+cat << EOF_hosts > /etc/hosts
 
 127.0.0.1  localhost
 ::1        localhost
 127.0.1.1  ${target_hostname}.localdomain ${target_hostname}
 
-EOF
+EOF_hosts
 
 passwd
 
 pacman -S grub efibootmgr sudo os-prober
 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 useradd -mG wheel ${username}
@@ -194,16 +184,20 @@ echo "Defaults env_reset,timestamp_timeout=60" >> /etc/sudoers
 exit
 EOF
 
+chmod 777 "/mnt/${arch_chroot_script}"
+
 # use arch-chroot to run the rest of our script
-arch-chroot /mnt "${arch_chroot_script}"
+arch-chroot /mnt "/${arch_chroot_script}"
+
 # remove the temporary script
-rm /mnt/${arch_chroot_install}
+rm /mnt/${arch_chroot_script}
+
 # move the setup into the main install so we can finish our setup
-cp -R /arch-setup /mnt/home/${username}/arch-setup/
+cp -R /arch_utils /mnt/home/${username}/
 
 # unmount the drives
-umount /mnt/boot/efi
-umount /mnt
+umount -R /mnt
+swapoff -a
 
 echo "Congrats, your installation (of Arch linux btw) is complete!"
 echo "Reboot now"
