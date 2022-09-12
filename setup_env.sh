@@ -4,7 +4,7 @@ echo "------------------- Updating Arch"
 sudo pacman -Syu
 
 echo "------------------- Installing basic packages"
-sudo pacman -S - < $HOME/arch_utils/data/pkglist.txt
+sudo pacman -S - < $HOME/arch_utils/config/pkglist.txt
 
 echo "------------------- Cloning yay"
 git clone https://aur.archlinux.org/yay.git $HOME/yay
