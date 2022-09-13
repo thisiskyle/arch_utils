@@ -1,5 +1,15 @@
 #!/bin/bash
 
+echo "------------------- Setting up dhcpcd"
+sudo systemctl start dhcpcd
+sudo systemctl enable dhcpcd
+
+echo "------------------- Waiting for dhcpcd"
+sleep 30s
+
+echo "------------------- Setting up time sync"
+sudo timedatectl set-ntp true
+
 echo "------------------- Updating Arch"
 sudo pacman -Syu
 
@@ -56,7 +66,6 @@ git clone https://github.com/thisiskyle/vim.git $HOME/.vim
 
 echo "------------------- Creating symlink to .vimrc"
 ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
-
 
 echo "------------------- Sourcing .bash_profile"
 source ${HOME}/.bash_profile

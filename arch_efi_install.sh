@@ -80,7 +80,7 @@ swap_path="/swapfile"
 arch_chroot_script="temp.sh"
 
 # set the full dev partition paths
-efiPart="${target_dev}1"
+espPart="${target_dev}1"
 rootPart="${target_dev}2"
 
 if [ -z ${fdisk_cmd+x} ]; then
@@ -100,9 +100,9 @@ timedatectl set-ntp true
 echo "Running fdisk and partitioning the drives"
 echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_dev}"
 
-# make filesystem on efi
-echo "Creating EFI filesystem on ${efiPart}"
-mkfs.fat -F32 "${efiPart}"
+# make filesystem on esp
+echo "Creating EFI filesystem on ${espPart}"
+mkfs.fat -F32 "${espPart}"
 
 # create the root filesystem
 echo "Creating root filesystem on ${rootPart}"
@@ -125,13 +125,9 @@ reflector -c "US" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 echo "Mounting root"
 mount "${rootPart}" /mnt
 
-# create efi mount point
-echo "Making /mnt/efi directory"
-mkdir /mnt/efi
-
-# mount efi partition
+# mount esp partition
 echo "Mounting EFI"
-mount "${efiPart}" /mnt/efi
+mount "${espPart}" /mnt/boot
 
 # install arch
 echo "Installing Arch with pacstrap"
@@ -168,12 +164,28 @@ cat << EOF_hosts > /etc/hosts
 
 EOF_hosts
 
+echo "Enter root password: "
 passwd
 
-pacman -S grub efibootmgr sudo os-prober
+pacman -S efibootmgr sudo os-prober
 
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+bootctl install
+
+cat << EOF_loaderconf > /boot/loader/loader.conf
+
+default arch.conf
+timeout 10
+
+EOF_loaderconf
+
+cat << EOF_archconf > /boot/loader/entries/arch.conf
+
+title Arch
+linux /vmlinuz-linux
+initrd /initramfs-linux.img
+options root=PARTUUID=1a4f1663-4b05-744b-b6a0-fe2496bb5070 rw
+
+EOF_archconf
 
 useradd -mG wheel ${username}
 passwd ${username}
@@ -196,7 +208,6 @@ rm /mnt/${arch_chroot_script}
 cp -R /arch_utils /mnt/home/${username}/
 
 # unmount the drives
-umount -R /mnt
 swapoff -a
 umount -R /mnt
 

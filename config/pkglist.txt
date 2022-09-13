@@ -1,3 +1,4 @@
+git
 base-devel
 vim
 neofetch
@@ -23,7 +24,7 @@ flameshot
 mpv
 mtools
 dosfstools
-linux-headers 
+linux-headers
 reflector
-xdg-utils 
-xdg-user-dirs 
+xdg-utils
+xdg-user-dirs
