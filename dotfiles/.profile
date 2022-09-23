@@ -13,8 +13,5 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# source the wallpaper settings
-source $HOME/.wallpaper
-
 # uncomment this line to start X on login
 #pgrep 'screen|tmux|startx' || startx

@@ -5,6 +5,7 @@
 # Executed by startx (run your window manager from here)
 
 # set background
+source $HOME/.wallpaper
 feh --bg-scale ${WALLPAPER} &
 
 # set resolution and refresh rate
