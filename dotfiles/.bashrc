@@ -8,23 +8,19 @@ alias ll='ls -al'
 
 EDITOR="vim"
 VISUAL="vim"
-WALLPAPER="${HOME}/arch_utils/wallpaper/cat.png"
+
+
+# prompt colors
+c1="\[\033[38;5;240m\]"
+c2="\[\033[38;5;245m\]"
+c3="\[\033[38;5;0m\]"
+r="\[\033[0m\]"
+
+# prompt formatting
+PS1="\n${c3}┌────[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\w${c3}]\n${c3}└─\$ ${r}"
+
+# default prompt
+#PS1='[\u@\h \W]\$ '
+
 
 cd $HOME
-
-# if the x server is running...
-if [[ $(pgrep 'screen|tmux|startx') ]]; then
-
-    c1="\[\033[38;5;240m\]"
-    c2="\[\033[38;5;245m\]"
-    c3="\[\033[38;5;0m\]"
-    r="\[\033[0m\]"
-
-    PS1="
-${c3}┌────[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\w${c3}]
-${c3}└─> ${r}"
-
-# if not, just do the default prompt
-else
-    PS1='[\u@\h \W]\$ '
-fi

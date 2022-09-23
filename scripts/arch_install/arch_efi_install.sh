@@ -8,8 +8,6 @@
 #    We assume we only want 2 partitions (1: EFI, 2: root) and we format those partitions accordingly.
 #    We also assume that this install will be taking up the entire harddrive
 #    
-#    Maybe one day I can make this more flexible with a config file or something
-#    but for now, this meets my needs.
 #  
 
 
@@ -19,7 +17,7 @@
 
 SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
-source "${SCRIPT_DIR}/config/arch_install.conf"
+source "${SCRIPT_DIR}/arch_install.conf"
 
 # get the target device from the user
 echo "\n!!!!! WARNING: THIS DEVICE WILL BE COMPLETELY ERASED !!!!!"
