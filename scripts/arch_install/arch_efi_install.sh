@@ -78,7 +78,7 @@ swap_path="/swapfile"
 arch_chroot_script="temp.sh"
 
 # set the full dev partition paths
-espPart="${target_dev}1"
+esp="${target_dev}1"
 rootPart="${target_dev}2"
 
 if [ -z ${fdisk_cmd+x} ]; then
@@ -99,8 +99,8 @@ echo "Running fdisk and partitioning the drives"
 echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_dev}"
 
 # make filesystem on esp
-echo "Creating EFI filesystem on ${espPart}"
-mkfs.fat -F32 "${espPart}"
+echo "Creating EFI filesystem on ${esp}"
+mkfs.fat -F32 "${esp}"
 
 # create the root filesystem
 echo "Creating root filesystem on ${rootPart}"
@@ -125,7 +125,7 @@ mount "${rootPart}" /mnt
 
 # mount esp partition
 echo "Mounting EFI"
-mount "${espPart}" /mnt/boot
+mount "${esp}" /mnt/boot
 
 # install arch
 echo "Installing Arch with pacstrap"
