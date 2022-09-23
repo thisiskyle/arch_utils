@@ -1,70 +1,70 @@
 #!/bin/bash
 
-echo "\n------- Updating Arch -------"
+echo "------- Updating Arch -------"
 sudo pacman -Syu
 
-echo "\n------ Installing basic packages -------"
+echo "------ Installing basic packages -------"
 sudo pacman -S - < $HOME/arch_utils/pkglist.txt
 
-echo "\n------- Cloning yay -------"
+echo "------- Cloning yay -------"
 git clone https://aur.archlinux.org/yay.git $HOME/yay
 
-echo "\n------- Installing yay -------"
+echo "------- Installing yay -------"
 cd $HOME/yay && makepkg -si
 
-echo "\n------- Updating yay -------"
+echo "------- Updating yay -------"
 yay -Syu
 
-echo "\n------- Installing AUR packages -------"
+echo "------- Installing AUR packages -------"
 yay -S yt-dlp yt-dlp-drop-in 
 
-echo "\n------- Cloning st -------"
+echo "------- Cloning st -------"
 git clone https://git.suckless.org/st $HOME/suckless/st
 
-echo "\n------- Cloning dwm -------"
+echo "------- Cloning dwm -------"
 git clone https://git.suckless.org/dwm $HOME/suckless/dwm
 
-echo "\n------- Cloning dmenu -------"
+echo "------- Cloning dmenu -------"
 git clone https://git.suckless.org/dmenu $HOME/suckless/dmenu
 
-echo "\n------- Cloning slock -------"
+echo "------- Cloning slock -------"
 git clone https://git.suckless.org/slock $HOME/suckless/slock
 
-echo "\n------- Installing dotfiles -------"
-$HOME/arch_utils/dotfiles_install.sh
+echo "------- Installing dotfiles -------"
+$HOME/arch_utils/scripts/dotman.sh --install
 
-echo "\n------- Compiling st -------"
+echo "------- Compiling st -------"
 cd $HOME/suckless/st
 sudo make clean install
 
-echo "\n------- Compiling dwm -------"
+echo "------- Compiling dwm -------"
 cd $HOME/suckless/dwm
 sudo make clean install
 
-echo "\n------- Compiling dmenu -------"
+echo "------- Compiling dmenu -------"
 cd $HOME/suckless/dmenu
 sudo make clean install
 
-echo "\n------- Compiling slock -------"
+echo "------- Compiling slock -------"
 cd $HOME/suckless/slock
 sudo make clean install
 
-echo "\n------- Downloading vim config -------"
+echo "------- Downloading vim config -------"
 git clone https://github.com/thisiskyle/vim.git $HOME/.vim
 
-echo "\n------- Creating symlinks -------"
+echo "------- Creating symlinks -------"
 mkdir $HOME/bin
 ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/arch_utils/scripts/dotman.sh ${HOME}/bin/dotman
 ln -sf ${HOME}/arch_utils/scripts/wallpaper.sh ${HOME}/bin/wallpaper
 
-echo "\n------- Sourcing .bash_profile -------"
+echo "------- Sourcing .bash_profile -------"
 source ${HOME}/.bash_profile
 
-echo "\n------- Setting background -------"
+echo "------- Setting background -------"
 feh --bg-scale $WALLPAPER &
 
-echo "\n------- Cleanup -------"
+echo "------- Cleanup -------"
 sudo rm -R $HOME/yay
 
-echo "\n------- Arch environment setup complete! -------"
+echo "------- Arch environment setup complete! -------"
