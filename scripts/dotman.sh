@@ -43,7 +43,7 @@ grep -v "^#" < ${dotfileList} | {
         fi
 
         # copy source to destination
-        echo "Coping ${src} to ${dest}"
+        echo "Copying ${src} to ${dest}"
         cp "${src}" "${dest}"
     done
 }

@@ -10,17 +10,21 @@ EDITOR="vim"
 VISUAL="vim"
 
 
-# prompt colors
-c1="\[\033[38;5;240m\]"
-c2="\[\033[38;5;245m\]"
-c3="\[\033[38;5;0m\]"
-r="\[\033[0m\]"
+if [[ $(pgrep 'screen|tmux|startx') ]]; then
 
-# prompt formatting
-PS1="\n${c3}┌────[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\w${c3}]\n${c3}└─\$ ${r}"
+    # prompt colors
+    c1="\[\033[38;5;240m\]"
+    c2="\[\033[38;5;245m\]"
+    c3="\[\033[38;5;0m\]"
+    r="\[\033[0m\]"
 
-# default prompt
-#PS1='[\u@\h \W]\$ '
+    # prompt formatting
+    PS1="\n${c3}┌────[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\w${c3}]\n${c3}└─\$ ${r}"
+
+else
+    # default prompt
+    PS1='[\u@\h \W]\$ '
+fi
 
 
 cd $HOME
