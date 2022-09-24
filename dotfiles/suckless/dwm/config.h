@@ -22,9 +22,11 @@ static const char col_white2[]      = "#dddddd";
 static const char col_black[]       = "#000000";
 
 static const char *colors[][3]      = {
-	/*               fg           bg           border   */
-	[SchemeNorm] = { col_black, col_gray5, col_black }, // window unselected
-	[SchemeSel]  = { col_black, col_gray5, col_black }, // selected window
+	/*                  fg           bg           border   */
+	[SchemeNorm]     = { col_black, col_gray5, col_black }, // window unselected
+	[SchemeSel]      = { col_black, col_gray5, col_black }, // selected window
+	[SchemeTagNorm]  = { col_black, col_gray5, col_black }, // selected tag
+	[SchemeTagSel]   = { col_gray5, col_black, col_black } // normal tag
 };
 
 /* tagging */

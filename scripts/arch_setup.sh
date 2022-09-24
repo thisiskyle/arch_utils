@@ -57,6 +57,7 @@ mkdir $HOME/bin
 ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/arch_utils/scripts/dotman.sh ${HOME}/bin/dotman
 ln -sf ${HOME}/arch_utils/scripts/wallpaper.sh ${HOME}/bin/wallpaper
+ln -sf ${HOME}/arch_utils/scripts/cursor.sh ${HOME}/bin/cursor
 
 echo "------- Sourcing .bash_profile -------"
 source ${HOME}/.bash_profile

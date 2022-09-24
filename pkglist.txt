@@ -28,3 +28,4 @@ linux-headers
 reflector
 xdg-utils
 xdg-user-dirs
+discord

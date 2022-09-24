@@ -54,5 +54,8 @@ while true; do
 
 done &
 
+# set mouse acceleration
+xinput set-prop 16 'libinput Accel Speed' -0.75
+
 # start window manager
 exec dwm
