@@ -1,16 +1,20 @@
 #!/bin/bash
 
+# the file with the list of dotfiles and their locations relative to the $HOME directory
 dotfileList="${HOME}/arch_utils/dotfilelist.txt"
+# the location of where to store the dotfiles
 dotfileStorage="${HOME}/arch_utils/dotfiles"
 
 
 # here we are collecting the arguments
 
 if [[ ${1} == "-s" ]] || [[ ${1} == "--save" ]]; then
+    # saving the current dotfiles on the system, to the storage location
     srcRoot="${HOME}"
     destRoot="${dotfileStorage}"
 
 elif [[ ${1} == "-i" ]] || [[ ${1} == "--install" ]]; then
+    # install the dotfiles from storage to their location
     srcRoot="${dotfileStorage}"
     destRoot="${HOME}"
 else
@@ -47,4 +51,3 @@ grep -v "^#" < ${dotfileList} | {
         cp "${src}" "${dest}"
     done
 }
-

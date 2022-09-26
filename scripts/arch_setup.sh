@@ -62,9 +62,6 @@ ln -sf ${HOME}/arch_utils/scripts/cursor.sh ${HOME}/bin/cursor
 echo "------- Sourcing .bash_profile -------"
 source ${HOME}/.bash_profile
 
-echo "------- Setting background -------"
-feh --bg-scale $WALLPAPER &
-
 echo "------- Cleanup -------"
 sudo rm -R $HOME/yay
 
