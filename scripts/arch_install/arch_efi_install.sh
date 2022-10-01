@@ -181,7 +181,7 @@ cat << EOF_archconf > /boot/loader/entries/arch.conf
 title Arch
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=PARTUUID=1a4f1663-4b05-744b-b6a0-fe2496bb5070 rw
+options root=PARTUUID=1a4f1663-4b05-744b-b6a0-fe2496bb5070 rw nomodeset
 
 EOF_archconf
 
