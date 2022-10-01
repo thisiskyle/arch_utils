@@ -29,17 +29,12 @@ gpu() {
 }
 
 cpu() {
-
     read -r cpu a b c previdle rest < /proc/stat
     prevtotal=$((a+b+c+previdle))
-
     sleep 0.5
-
     read -r cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
-
     echo "CPU $((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))%"
-
 }
 
 ram() {
@@ -48,10 +43,9 @@ ram() {
 
 
 while true; do 
-
-    xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
+    #xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
+    xsetroot -name "[ $(get_date) ]--[ $(get_time) ]";
     sleep 0.5s; 
-
 done &
 
 # set mouse acceleration
