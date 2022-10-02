@@ -29,3 +29,5 @@ reflector
 xdg-utils
 xdg-user-dirs
 discord
+htop
+nvtop

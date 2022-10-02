@@ -59,6 +59,11 @@ ln -sf ${HOME}/arch_utils/scripts/dotman.sh ${HOME}/bin/dotman
 ln -sf ${HOME}/arch_utils/scripts/wallpaper.sh ${HOME}/bin/wallpaper
 ln -sf ${HOME}/arch_utils/scripts/cursor.sh ${HOME}/bin/cursor
 
+echo "------- Installing Cursor -------"
+cd $HOME
+wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.local/share/icons/
+cursor phinger-cursors-light
+
 echo "------- Sourcing .bash_profile -------"
 source ${HOME}/.bash_profile
 
