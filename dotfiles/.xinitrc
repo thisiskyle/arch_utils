@@ -5,8 +5,7 @@
 # Executed by startx (run your window manager from here)
 
 # set background
-source $HOME/.wallpaper
-feh --bg-scale ${WALLPAPER} &
+source $HOME/.fehbg
 
 # set resolution and refresh rate
 # i dont think we really need these anymore
@@ -15,6 +14,7 @@ feh --bg-scale ${WALLPAPER} &
 #xrandr --output Virtual-1 --mode "1920x1080_60.00"
 #xrandr --output DP-4 --mode "1920x1080" --rate "144" &
 
+[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 # status bar stuff
 get_date() {
@@ -52,7 +52,7 @@ done &
 # set mouse acceleration
 xinput set-prop 15 'libinput Accel Speed' -0.75
 
-[[ -f $HOME/.Xresources ]] && xrdb $HOME/.Xresources
+xrdb $HOME/.Xresources
 
 # start window manager
 exec dwm
