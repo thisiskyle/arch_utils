@@ -58,6 +58,7 @@ ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/arch_utils/scripts/dotman.sh ${HOME}/bin/dotman
 ln -sf ${HOME}/arch_utils/scripts/wallpaper.sh ${HOME}/bin/wallpaper
 ln -sf ${HOME}/arch_utils/scripts/cursor.sh ${HOME}/bin/cursor
+ln -sf ${HOME}/arch_utils/scripts/itch_start.sh ${HOME}/bin/itch
 
 echo "------- Installing Cursor -------"
 cd $HOME

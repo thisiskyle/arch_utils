@@ -1,74 +1,62 @@
 #!/bin/bash
 
-#
-#    This script is for installing arch by itself, on a single harddrive. Whatever device you
-#    provide will be erased during this process.
-#
-#    Partitions are created using mostly hard coded values and a few assumptions. 
-#    We assume we only want 2 partitions (1: EFI, 2: root) and we format those partitions accordingly.
-#    We also assume that this install will be taking up the entire harddrive
-#    
-#  
-
-
-# TODO/feature: Maybe here we can just give a little run down of what is about to happen
-#               with some warnings about the partitions and what not
-
-
+# get the directory this script is running in
 SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
-source "${SCRIPT_DIR}/arch_install.conf"
+# source the config file
+source "${SCRIPT_DIR}/config"
 
 # get the target device from the user
 echo "\n!!!!! WARNING: THIS DEVICE WILL BE COMPLETELY ERASED !!!!!"
-echo -n "Target device (ex. /dev/sda): "
-read target_dev
+read -p "Target device (ex. /dev/sda): " target_dev
 
 # TODO/feature: here, maybe check to make sure that this device exists?
-#               then double check with user is this is correct, if not we abort
+
+# ask for confirmation that the chosen device is correct
+read -p "The target device that will be formatted and partitioned is ${target_dev}, is this correct? (y/n): " user_confirm
+user_confirm=${user_confirm:-y}
+# check the confirmation
+if [[ ${user_confirm,,} != "y" ]] || [[ ${user_confirm,,} != "yes" ]]; then
+    echo "Exiting"
+    exit 1
+fi
+
 
 # ask user for hostname if config did not set it
 if [ -z ${target_hostname+x} ]; then
-    echo -n "Target hostname: "
-    read target_hostname
+    read -p "Target hostname: " target_hostname
 fi
 
 # if no set, ask user for swapfile size in GB
 if [ -z ${swap_size+x} ]; then
     # TODO/improve: maybe we can check the amount of RAM and suggest a swapfile size?
-    echo -n "Target swapfile size (GB): "
-    read swap_size
+    read -p "Target swapfile size (GB): " swap_size
 fi
 
 # verify that we got a number as a response
 reg="^[0-9]+$"
 while ! [[ $swap_size =~ $reg ]]; do
-    echo -n "Swapfile size must be a number: " >&2
-    read swap_size
+    read -p "Swapfile size must be a number: " swap_size
 done
 
 # ask user for local timezone
 if [ -z ${local_timezone+x} ]; then
-    echo -n "Local timezone (ex. America/Detroit): "
-    read local_timezone
+    read -p "Local timezone (ex. America/Detroit): " local_timezone
 fi
 
 # ask user for locale
 if [ -z ${locale+x} ]; then
-    echo -n "Target Locale (ex. en_US.UTF-8 UTF-8): "
-    read locale
+    read -p "Target Locale (ex. en_US.UTF-8 UTF-8): " locale
 fi
 
 # ask user for lang
 if [ -z ${lang+x} ]; then
-    echo -n "Target lang (ex. en_US.UTF-8): "
-    read lang
+    read -p "Target lang (ex. en_US.UTF-8): " lang
 fi
 
 # if unset, ask for username input
 if [ -z ${username+x} ]; then
-    echo -n "Target username: "
-    read username
+    read -p "Target username: " username
 fi
 
 # location of the swapfile
@@ -81,11 +69,6 @@ arch_chroot_script="temp.sh"
 esp="${target_dev}1"
 rootPart="${target_dev}2"
 
-if [ -z ${fdisk_cmd+x} ]; then
-    echo "ERROR: fdisk_cmd unset. Aborting"
-    exit 1
-fi
-
 # unmount the drives
 umount -R /mnt
 swapoff -a
@@ -94,9 +77,33 @@ swapoff -a
 echo "Setting time protocol sync"
 timedatectl set-ntp true
 
-# run fdisk
-echo "Running fdisk and partitioning the drives"
-echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_dev}"
+# check if the fdisk commands are set from the config
+if [ -z ${fdisk_cmd+x} ]; then
+    # unset fdisk commands
+    read -p "WARNING: fdisk_cmd is unset. Would you like to partition the drive manually? (y/n): " manual_fdisk
+    manual_fdisk=${manual_fdisk:-y}
+
+    if [[ ${manual_fdisk,,} == "y" ]] || [[ ${manual_fdisk,,} == "yes" ]]; then
+        # run fdisk manually
+        fdisk "${target_dev}"
+        if [[ ${?} -ne 0 ]]; then
+            echo "ERROR: fdisk failed. Exiting"
+            exit 1
+        fi
+    else
+        # user doesnt want to manually partition the disks
+        echo "Exiting"
+        exit 1
+    fi
+else
+    # run automated fdisk
+    echo "Running fdisk and partitioning the drives"
+    echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_dev}"
+    if [[ ${?} -ne 0 ]]; then
+        echo "ERROR: fdisk failed. Exiting"
+        exit 1
+    fi
+fi
 
 # make filesystem on esp
 echo "Creating EFI filesystem on ${esp}"
@@ -109,7 +116,7 @@ mkfs.ext4 "${rootPart}"
 # install reflector
 echo "Installing reflector"
 pacman -Syy
-pacman -S reflector
+pacman -S --noconfirm reflector
 
 # backup up mirrorlist
 echo "Backing up mirrorlist"
@@ -135,7 +142,8 @@ pacstrap /mnt base linux linux-firmware vim dhcpcd base-devel
 echo "Generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# TODO/incomplete: arch-chroot stuff here use a cat heredoc or whatever to create a file on the /mnt parition
+# this will use a cat heredoc or whatever to create a file on the /mnt parition
+# to be run by arch-chroot
 cat <<EOF > /mnt/${arch_chroot_script}
 
 dd if=/dev/zero of=${swap_path} bs=1G count=${swap_size} status=progress
@@ -165,7 +173,7 @@ EOF_hosts
 echo "Enter root password: "
 passwd
 
-pacman -S efibootmgr sudo os-prober
+pacman -S --noconfirm efibootmgr sudo os-prober
 
 bootctl install
 
@@ -176,19 +184,20 @@ timeout 10
 
 EOF_loaderconf
 
+
 cat << EOF_archconf > /boot/loader/entries/arch.conf
 
 title Arch
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options root=PARTUUID=1a4f1663-4b05-744b-b6a0-fe2496bb5070 rw nomodeset
+options root=PARTUUID=$(blkid -s PARTUUID -o value ${esp}) rw nomodeset
 
 EOF_archconf
 
 useradd -mG wheel ${username}
 passwd ${username}
 
-echo "%wheel all=(all) all" >> /etc/sudoers
+echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 echo "Defaults env_reset,timestamp_timeout=60" >> /etc/sudoers
 
 exit
