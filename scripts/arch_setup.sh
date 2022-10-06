@@ -65,6 +65,9 @@ cd $HOME
 wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.local/share/icons/
 cursor phinger-cursors-light
 
+echo "------- Setting Wallpaper -------"
+wallpaper cat.png
+
 echo "------- Sourcing .bash_profile -------"
 source ${HOME}/.bash_profile
 

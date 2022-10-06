@@ -4,7 +4,6 @@
 .Xresources
 .profile
 .gitconfig
-.wallpaper
 suckless/st/config.h
 suckless/dwm/config.h
 suckless/dwm/dwm.c
