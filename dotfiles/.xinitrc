@@ -46,7 +46,7 @@ ram() {
 while true; do 
     #xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
     xsetroot -name "[ $(get_date) ]--[ $(get_time) ]";
-    sleep 0.5s; 
+    sleep 1s; 
 done &
 
 # set mouse acceleration
