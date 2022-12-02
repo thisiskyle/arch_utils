@@ -3,3 +3,6 @@
 	name = Kyle
 [alias]
 	dog = log --all --decorate --oneline --graph
+
+[core]
+    editor = vim
