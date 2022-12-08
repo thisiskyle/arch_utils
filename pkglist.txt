@@ -9,7 +9,6 @@ xorg-xinit
 xorg-server
 screen
 ttc-iosevka
-ttf-jetbrains-mono
 openssh
 keepass
 cifs-utils
