@@ -58,12 +58,15 @@ ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
 ln -sf ${HOME}/arch_utils/scripts/dotman.sh ${HOME}/bin/dotman
 ln -sf ${HOME}/arch_utils/scripts/wallpaper.sh ${HOME}/bin/wallpaper
 ln -sf ${HOME}/arch_utils/scripts/cursor.sh ${HOME}/bin/cursor
-ln -sf ${HOME}/arch_utils/scripts/itch_start.sh ${HOME}/bin/itch
 
 echo "------- Installing Cursor -------"
 cd $HOME
-wget -cO- https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.local/share/icons/
+curl -L https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.local/share/icons/
 cursor phinger-cursors-light
+
+echo "------- Installing Font -------"
+mkdir /usr/share/fonts/TTF
+curl -L https://github.com/blobject/agave/releases/latest/download/Agave-Regular-slashed.ttf -o /usr/share/fonts/TTF/agave.ttf
 
 echo "------- Setting Wallpaper -------"
 wallpaper cat.png
