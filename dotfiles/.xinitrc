@@ -26,7 +26,9 @@ get_time() {
 }
 
 gpu() {
-    echo "GPU $(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)°C"
+    temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)
+    usage=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits)
+    echo "GPU ${usage}% (${temp}°C)"
 }
 
 cpu() {
@@ -45,7 +47,7 @@ ram() {
 
 while true; do 
     #xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
-    xsetroot -name "[ $(get_date) ]--[ $(get_time) ]";
+    xsetroot -name "$(gpu) | $(get_date) | $(get_time) ";
     sleep 1s; 
 done &
 
