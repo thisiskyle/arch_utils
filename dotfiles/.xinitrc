@@ -52,7 +52,7 @@ while true; do
 done &
 
 # set mouse acceleration
-xinput set-prop 15 'libinput Accel Speed' -0.75
+xinput set-prop 'Logitech USB Receiver' 'libinput Accel Speed' -0.75
 
 xrdb $HOME/.Xresources
 
