@@ -18,7 +18,7 @@ source $HOME/.fehbg
 
 # status bar stuff
 get_date() {
-    echo "$(date +"%m/%d/%Y")"
+    echo "$(date +"%Y-%m-%d")"
 }
 
 get_time() {
@@ -47,7 +47,7 @@ ram() {
 
 while true; do 
     #xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
-    xsetroot -name "$(ram)  //  $(cpu)  //  $(gpu)  //  $(get_date)  //  $(get_time) ";
+    xsetroot -name "//  $(ram)  //  $(cpu)  //  $(gpu)  //  $(get_date)  //  $(get_time)  //";
     sleep 1s; 
 done &
 
