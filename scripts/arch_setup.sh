@@ -67,6 +67,8 @@ cursor phinger-cursors-light
 echo "------- Installing Font -------"
 mkdir /usr/share/fonts/TTF
 curl -L https://github.com/blobject/agave/releases/latest/download/Agave-Regular-slashed.ttf -o /usr/share/fonts/TTF/agave.ttf
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Agave.tar.xz -o ./agave_nerd.tar.xz
+sudo tar -xf agave_nerd.tar.xz -C /usr/share/fonts/TTF/
 
 echo "------- Setting Wallpaper -------"
 wallpaper cat.png
