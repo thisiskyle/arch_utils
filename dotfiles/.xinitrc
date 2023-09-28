@@ -46,8 +46,8 @@ ram() {
 
 
 while true; do 
-    #xsetroot -name "[ $(ram) ]--[ $(cpu) ]--[ $(gpu) ]--[ $(get_date) ]--[ $(get_time) ]";
-    xsetroot -name "//  $(ram)  //  $(cpu)  //  $(gpu)  //  $(get_date)  //  $(get_time)  //";
+    #xsetroot -name "[ $(ram) ]-[ $(cpu) ]-[ $(gpu) ]-[ $(get_date) ]-[ $(get_time) ]";
+    xsetroot -name "| $(ram) | $(cpu) | $(gpu) | $(get_time) | $(get_date)  ";
     sleep 1s; 
 done &
 

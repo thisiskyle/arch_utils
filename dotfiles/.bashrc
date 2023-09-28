@@ -1,4 +1,4 @@
-# $HOME/.bashrc
+#$HOME/.bashrc
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -19,8 +19,8 @@ if [[ $(pgrep 'screen|tmux|startx') ]]; then
     r="\[\033[0m\]"
 
     # fancy prompt formatting
-    PS1="${c3}┌────[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\w${c3}]\n${c3}└─\$ ${r}"
-    #PS1="${c3}[${c2}\u${c3}@${c2}\h${c3}]─[${c2}\W${c3}]$ ${r}"
+    #PS1="${c3}┌---[${c2}\u${c3}@${c2}\h${c3}]-[${c2}\w${c3}]\n${c3}└─\$ ${r}"
+    PS1="${c3}[${c2}\u${c3}@${c2}\h${c3}][${c2}\W${c3}]\$ ${r}"
 
 else
     # default prompt
