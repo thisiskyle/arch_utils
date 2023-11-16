@@ -19,3 +19,5 @@
 ![](https://github.com/thisiskyle/arch-setup/blob/master/wallpaper/crab.png)
 ![](https://github.com/thisiskyle/arch-setup/blob/master/wallpaper/house.png)
 ![](https://github.com/thisiskyle/arch-setup/blob/master/wallpaper/ganon.png)
+![](https://github.com/thisiskyle/arch-setup/blob/master/wallpaper/dwarf_fortress_steam.png)
+![](https://github.com/thisiskyle/arch-setup/blob/master/wallpaper/frugal_wizard.png)
