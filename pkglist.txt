@@ -1,6 +1,7 @@
 git
 base-devel
 vim
+neovim
 neofetch
 feh
 firefox
@@ -8,7 +9,6 @@ xorg
 xorg-xinit
 xorg-server
 screen
-ttc-iosevka
 openssh
 keepass
 cifs-utils
@@ -31,3 +31,4 @@ xdg-user-dirs
 discord
 htop
 nvtop
+unzip
