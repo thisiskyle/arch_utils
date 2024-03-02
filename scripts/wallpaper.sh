@@ -3,7 +3,12 @@
 
 
 wallpaper_locations=(
-    "$HOME/arch_utils/wallpaper/"
+    "$HOME/arch_utils/wallpaper/cosmere/"
+    "$HOME/arch_utils/wallpaper/cozy/"
+    "$HOME/arch_utils/wallpaper/misc/"
+    "$HOME/arch_utils/wallpaper/outerwilds/"
+    "$HOME/arch_utils/wallpaper/space/"
+    "$HOME/arch_utils/wallpaper/zelda/"
 )
 
 
@@ -19,8 +24,6 @@ if [[ "${1}" == "-list" ]]; then
 
     exit
 fi
-
-
 
 
 for i in "${wallpaper_locations[@]}"

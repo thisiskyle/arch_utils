@@ -5,7 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "AgaveNerdFontMono-Regular:pixelsize=16:antialias=true:autohint=true";
+//static char *font = "AgaveNerdFontMono-Regular:pixelsize=16:antialias=true:autohint=true";
+static char *font = "MapleMono-Regular:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 /*
  * What program is execed by st depends of these precedence rules:

@@ -2,52 +2,34 @@
 
 # the file with the list of dotfiles and their locations relative to the $HOME directory
 dotfileList="${HOME}/arch_utils/dotfilelist.txt"
+
 # the location of where to store the dotfiles
-dotfileStorage="${HOME}/arch_utils/dotfiles"
+dotfileDir="${HOME}/arch_utils/dotfiles"
 
 
-# here we are collecting the arguments
-
-if [[ ${1} == "-s" ]] || [[ ${1} == "--save" ]]; then
-    # saving the current dotfiles on the system, to the storage location
-    srcRoot="${HOME}"
-    destRoot="${dotfileStorage}"
-
-elif [[ ${1} == "-i" ]] || [[ ${1} == "--install" ]]; then
-    # install the dotfiles from storage to their location
-    srcRoot="${dotfileStorage}"
-    destRoot="${HOME}"
-else
-    echo "${1} is not a valid argument"
-    exit 1;
-fi
-
-# ignore any lines that are comments
-# this will only work for lines that start with '#'
+# ignore any lines that are comments this will only work for lines that start with '#'
 grep -v "^#" < ${dotfileList} | {
-
     # for each line grep output
     while read line; do
 
-        src="${srcRoot}/${line}"
+        linkSrc="${dotfileDir}/${line}"
 
         # check if the source exists. If it doesnt skip it
-        if [[ ! -f "$src" ]]; then
-            echo "WARNING: File ${src} does not exist"
+        if [[ ! -f "${linkSrc}" ]]; then
+            echo "WARNING: File ${linkSrc} does not exist"
             continue;
         fi
 
-        dest="${destRoot}/${line}"
-        destDir="${dest%/*}"
+        link="${HOME}/${line}"
+        linkDir="${link%/*}"
 
         # check if destination directory exists. If not, we make it
-        if [[ ! -d "$destDir" ]]; then
-            echo "Destination directory ${destDir} does not exist. Creating it now."
-            mkdir -p "${destDir}"
+        if [[ ! -d "$linkDir" ]]; then
+            echo "Destination directory ${linkDir} does not exist. Creating it now."
+            mkdir -p "${linkDir}"
         fi
 
-        # copy source to destination
-        echo "Copying ${src} to ${dest}"
-        cp "${src}" "${dest}"
+        rm "${HOME}/${line}
+        ln -sf ${linkSrc} ${link}
     done
 }
