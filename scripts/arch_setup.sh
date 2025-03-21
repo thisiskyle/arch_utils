@@ -55,13 +55,17 @@ echo "------- Compiling slock -------"
 cd $HOME/suckless/slock
 sudo make clean install
 
-echo "------- Downloading vim config -------"
+echo "------- Cloning vim config -------"
 git clone https://github.com/thisiskyle/vim.git $HOME/.vim
 ln -sf ${HOME}/.vim/.vimrc ${HOME}/.vimrc
 
-echo "------- Downloading neovim config -------"
+echo "------- Cloning neovim config -------"
 rm -rf $HOME/.config/nvim
 git clone https://github.com/thisiskyle/nvim.git $HOME/.config/nvim
+
+echo "------- Cloning wallpaper -------"
+rm -rf $HOME/wallpaper
+git clone https://github.com/thisiskyle/wallpaper.git $HOME/wallpaper
 
 echo "------- Installing Cursor -------"
 cd $HOME

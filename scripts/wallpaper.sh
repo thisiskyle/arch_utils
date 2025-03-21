@@ -1,14 +1,12 @@
 #!/bin/bash
 
-
-
 wallpaper_locations=(
-    "$HOME/arch_utils/wallpaper/cosmere/"
-    "$HOME/arch_utils/wallpaper/cozy/"
-    "$HOME/arch_utils/wallpaper/misc/"
-    "$HOME/arch_utils/wallpaper/outerwilds/"
-    "$HOME/arch_utils/wallpaper/space/"
-    "$HOME/arch_utils/wallpaper/zelda/"
+    "$HOME/wallpaper/cosmere/"
+    "$HOME/wallpaper/cozy/"
+    "$HOME/wallpaper/misc/"
+    "$HOME/wallpaper/outerwilds/"
+    "$HOME/wallpaper/space/"
+    "$HOME/wallpaper/zelda/"
 )
 
 
