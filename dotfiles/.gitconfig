@@ -1,8 +1,11 @@
 [user]
 	email = 
 	name = Kyle
-[alias]
-	dog = log --all --decorate --oneline --graph
-
 [core]
-    editor = vim
+	editor = nvim
+[alias]
+    lg = log --all --decorate --oneline --graph -30
+    lga = log --all --decorate --oneline --graph
+    undo = reset --soft HEAD~1
+    nah = !git reset --hard && git clean -df
+    fu = !git commit --fixup=HEAD && git rebase --autosquash HEAD~2
