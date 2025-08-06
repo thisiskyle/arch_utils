@@ -4,6 +4,7 @@
 .Xresources
 .profile
 .gitconfig
+.tmux.conf
 suckless/st/config.h
 suckless/dwm/config.h
 suckless/dwm/dwm.c
