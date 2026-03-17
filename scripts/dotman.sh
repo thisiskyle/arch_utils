@@ -33,7 +33,7 @@ grep -v "^#" < ${dotfileList} | {
             mkdir -p "${linkDir}"
         fi
 
-        rm "${HOME}/${line}
+        rm "${HOME}/${line}"
         ln -sf ${linkSrc} ${link}
     done
 }
