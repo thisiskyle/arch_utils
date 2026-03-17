@@ -7,9 +7,11 @@ locale="en_US.UTF-8 UTF-8"
 lang="en_US.UTF-8"
 username="username"
 
-# There are the commands to be sent to fdisk for partitioning
+# These are the commands to be sent to fdisk for partitioning
 # you can use '#' for comments, comments must start on a new line
-# newlines are the same as hitting 'enter' so empty space matters
+# newlines are the same as hitting 'enter' so 
+# EMPTY LINES MATTER!!!
+#
 fdisk_cmd=$(cat << EOF
 # delete 2 partitions, we are assuming they are the only ones
 d

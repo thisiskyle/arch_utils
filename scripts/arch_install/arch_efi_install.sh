@@ -8,12 +8,12 @@ source "${SCRIPT_DIR}/config"
 
 # get the target device from the user
 echo "\n!!!!! WARNING: THIS DEVICE WILL BE COMPLETELY ERASED !!!!!"
-read -p "Target device (ex. /dev/sda): " target_dev
+read -p "Target device (ex. /dev/sda): " target_device
 
-# TODO/feature: here, maybe check to make sure that this device exists?
+# todo:feature: here, maybe check to make sure that this device exists?
 
 # ask for confirmation that the chosen device is correct
-read -p "The target device that will be formatted and partitioned is ${target_dev}, is this correct? (y/n): " user_confirm
+read -p "The target device that will be formatted and partitioned is ${target_device}, is this correct? (y/n): " user_confirm
 user_confirm=${user_confirm:-y}
 # check the confirmation
 if [[ ${user_confirm,,} != "y" ]] || [[ ${user_confirm,,} != "yes" ]]; then
@@ -27,16 +27,16 @@ if [ -z ${target_hostname+x} ]; then
     read -p "Target hostname: " target_hostname
 fi
 
-# if no set, ask user for swapfile size in GB
+# if not set, ask user for swapfile size in GB
 if [ -z ${swap_size+x} ]; then
-    # TODO/improve: maybe we can check the amount of RAM and suggest a swapfile size?
+    # todo:improve: maybe we can check the amount of RAM and suggest a swapfile size?
     read -p "Target swapfile size (GB): " swap_size
 fi
 
 # verify that we got a number as a response
 reg="^[0-9]+$"
 while ! [[ $swap_size =~ $reg ]]; do
-    read -p "Swapfile size must be a number: " swap_size
+    read -p "Swapfile size must be a number (GB): " swap_size
 done
 
 # ask user for local timezone
@@ -66,8 +66,8 @@ swap_path="/swapfile"
 arch_chroot_script="temp.sh"
 
 # set the full dev partition paths
-esp="${target_dev}1"
-rootPart="${target_dev}2"
+esp="${target_device}1"
+rootPart="${target_device}2"
 
 # unmount the drives
 umount -R /mnt
@@ -85,7 +85,7 @@ if [ -z ${fdisk_cmd+x} ]; then
 
     if [[ ${manual_fdisk,,} == "y" ]] || [[ ${manual_fdisk,,} == "yes" ]]; then
         # run fdisk manually
-        fdisk "${target_dev}"
+        fdisk "${target_device}"
         if [[ ${?} -ne 0 ]]; then
             echo "ERROR: fdisk failed. Exiting"
             exit 1
@@ -98,7 +98,7 @@ if [ -z ${fdisk_cmd+x} ]; then
 else
     # run automated fdisk
     echo "Running fdisk and partitioning the drives"
-    echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_dev}"
+    echo "${fdisk_cmd}" | grep -v "^#" | fdisk "${target_device}"
     if [[ ${?} -ne 0 ]]; then
         echo "ERROR: fdisk failed. Exiting"
         exit 1
@@ -218,6 +218,4 @@ cp -R /arch_utils /mnt/home/${username}/
 swapoff -a
 umount -R /mnt
 
-echo "Congrats, your installation (of Arch linux btw) is complete!"
-echo "Reboot now"
-
+echo "Congratulations, your installation (Arch linux btw) is complete!"
