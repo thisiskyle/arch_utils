@@ -1,6 +1,6 @@
 [user]
-	email = 
-	name = Kyle
+	email = ""
+	name = "Kyle"
 [core]
 	editor = nvim
 [alias]
@@ -9,3 +9,4 @@
     undo = reset --soft HEAD~1
     nah = !git reset --hard && git clean -df
     fu = !git commit --fixup=HEAD && git rebase --autosquash HEAD~2
+    fix-author = commit --amend --reset-author --no-edit

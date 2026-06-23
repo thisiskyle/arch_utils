@@ -9,4 +9,6 @@ EDITOR="nvim"
 VISUAL="nvim"
 
 # PS1="[\u@\h \W]\$ "
-PS1="[\u   \w]\$ "
+# PS1="\n┌──[ \u@\h ]─[ \w ]\n└╴\$ "
+
+PS1="\w ❱ "
