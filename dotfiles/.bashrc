@@ -10,5 +10,8 @@ VISUAL="nvim"
 
 # PS1="[\u@\h \W]\$ "
 # PS1="\n┌──[ \u@\h ]─[ \w ]\n└╴\$ "
-
 PS1="\w ❱ "
+
+# source any machine specific bashrc stuff
+[[ -f ${HOME}/.bashrc_local ]] && source ${HOME}/.bashrc_local
+

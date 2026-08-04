@@ -116,7 +116,7 @@ install_fonts() {
     mkdir /usr/share/fonts/TTF
 
     echo "Maple"
-    curl -L https://github.com/subframe7536/maple-font/releases/download/v7.0-beta6/ttf.zip -o $HOME/downloads/maple.zip
+    curl -L "https://github.com/subframe7536/maple-font/releases/download/v8.0-beta.1/MapleMonoNL-NFMono-unhinted.zip" -o $HOME/downloads/maple.zip
     sudo unzip $HOME/downloads/maple.zip -d /usr/share/fonts/TTF/
 }
 
