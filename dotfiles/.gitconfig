@@ -1,6 +1,6 @@
 [user]
-	email = ""
-	name = "Kyle"
+	email = kyle.ericson1@gmail.com
+	name = thisiskyle
 [core]
 	editor = nvim
 [alias]
