@@ -14,3 +14,7 @@ PS1="[\u@\h \W]\$ "
 # source any machine specific bashrc stuff
 [[ -f ${HOME}/.bashrc_local ]] && source ${HOME}/.bashrc_local
 
+
+# source our bash_functions
+[[ -f ${HOME}/arch_utils/scripts/bash_functions.sh ]] && source ${HOME}/arch_utils/scripts/bash_functions.sh
+

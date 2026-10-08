@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+init() {
+    source $HOME/arch_utils/scripts/bash_functions.sh
+}
+
 install_core_packages() {
     echo "------ Installing core packages -------"
     sudo pacman -Syu
@@ -8,6 +12,7 @@ install_core_packages() {
 }
 
 
+# todo:deprecated: we source these into our bashrc now
 create_script_symlinks() {
     echo "------- Linking scripts to bin -------"
     mkdir $HOME/bin
@@ -17,6 +22,7 @@ create_script_symlinks() {
 }
 
 
+# todo:note: these are dangerous now, AUR packages getting hacked
 install_yay() {
     echo "------- Installing yay -------"
 
@@ -73,10 +79,6 @@ compile_suckless() {
 }
 
 
-create_dotfile_symlinks() {
-    echo "------- Linking dotfiles -------"
-    dotman
-}
 
 
 setup_vim_config() {
@@ -100,7 +102,7 @@ setup_wallpaper() {
     git clone https://github.com/thisiskyle/wallpaper.git $HOME/wallpaper
 
     echo "Setting"
-    wallpaper cat.png
+    set_wallpaper cat.png
 }
 
 install_cursors() {
@@ -108,40 +110,36 @@ install_cursors() {
     echo "Phinger"
     cd $HOME
     curl -L https://github.com/phisch/phinger-cursors/releases/latest/download/phinger-cursors-variants.tar.bz2 | tar xfj - -C ~/.local/share/icons/
-    cursor phinger-cursors-light
+    set_cursor phinger-cursors-light
+}
+
+create_dotfile_symlinks() {
+    echo "------- Linking dotfiles -------"
+    dotman
 }
 
 install_fonts() {
     echo "------- Installing Fonts -------"
     mkdir /usr/share/fonts/TTF
-
     echo "Maple"
     curl -L "https://github.com/subframe7536/maple-font/releases/download/v8.0-beta.1/MapleMonoNL-NFMono-unhinted.zip" -o $HOME/downloads/maple.zip
     sudo unzip $HOME/downloads/maple.zip -d /usr/share/fonts/TTF/
 }
 
 finalize() {
-
     source ${HOME}/.bash_profile
     echo "------- Arch environment setup complete! -------"
 }
 
 
+init
+
 install_core_packages
-create_script_symlinks
-
-# install_yay
-# install_aur_packages
-
 clone_suckless
 create_dotfile_symlinks
 compile_suckless
-
-# setup_vim_config
 setup_neovim_config
-
 setup_wallpaper
-
 install_cursors
 install_fonts
 
