@@ -10,3 +10,4 @@
     nah = !git reset --hard && git clean -df
     fu = !git commit --fixup=HEAD && git rebase --autosquash HEAD~2
     fix-author = commit --amend --reset-author --no-edit
+    ffd = "!f() { git merge --ff-only \"$1\" && git branch -d \"$1\"; }; f"

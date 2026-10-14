@@ -8,8 +8,7 @@ alias ll='ls -al'
 EDITOR="nvim"
 VISUAL="nvim"
 
-PS1="[\u@\h \W]\$ "
-# PS1="\w $ "
+PS1="[\u@\h \w]\$ "
 
 # source any machine specific bashrc stuff
 [[ -f ${HOME}/.bashrc_local ]] && source ${HOME}/.bashrc_local
